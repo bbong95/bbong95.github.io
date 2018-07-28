@@ -15,7 +15,7 @@ author: bbong5
 ---
 **leaflet에 다양한 배경지도 띄우기**{: style="display:inherit;text-align:center;"}
 ---
-OSM, 네이버지도, 다음지도, 브이월드 등 다양한 배경지도를 leaflet에서 표시해 본다.
+OSM, 구글지도, 네이버지도, 다음지도, 브이월드 등 다양한 배경지도를 leaflet에서 표시해 본다.
 
 # Leaflet 배경지도
 
