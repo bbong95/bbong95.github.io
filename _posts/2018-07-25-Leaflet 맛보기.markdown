@@ -21,7 +21,7 @@ OSM, 구글지도, 네이버지도, 다음지도, 브이월드 등 다양한 배
 # Leaflet 배경지도
 
 가장 먼저 해야 할 것이 배경지도를 뿌려주는 것이다.<br/>
-배경지도는 오픈 된 것(TMS: Tiled Map Service-[https://en.wikipedia.org/wiki/Tile_Map_Srviceervice](https://en.wikipedia.org/wiki/Tile_Map_Service){:target="_blank"})이 많이 있기 때문에 그것들을 사용하기로 한다.<br/>
+배경지도는 오픈 된 것 (TMS: Tiled Map Service-[https://en.wikipedia.org/wiki/Tile_Map_Srviceervice](https://en.wikipedia.org/wiki/Tile_Map_Service){:target="_blank"})이 많이 있기 때문에 그것들을 사용하기로 한다.<br/>
 일단 목표는 `OSM`(Open Street Map: [https://www.openstreetmap.org/](https://www.openstreetmap.org/){:target="_blank"}), `Google Map`([https://www.google.com/maps](https://www.google.com/maps){:target="_blank"}), `네이버지도`([https://map.naver.com/](https://map.naver.com/){:target="_blank"}), `Daum지도`([http://map.daum.net/](http://map.daum.net/){:target="_blank"}), `브이월드`([http://map.vworld.kr/map/maps.do](http://map.vworld.kr/map/maps.do){:target="_blank"})등을 띄우는 것을 목표로 한다.<br/>
 각 지도들 마다 Street Map 형태, Satellite Map 형태, Hybrid Map 형태, 회색 Map 형태 등을 제공하는데, 각각 전부를 뿌려 볼 생각이다.
 
@@ -97,12 +97,14 @@ body { height: 100%; margin: 0; padding: 0;}
 #### Gist에 소스 연동
 {% gist 410fed698071826323c8dfc7d73124e0 %}
 
+
 ### 3. 배경 지도 스크립트
+
 지금부터는 약간의 Geographic Informaiton System(이하, GIS)의 개념이 필요하다.</br>
-- 좌표(체)계: 좌표(체)계에 대한 이해가 필요한 이유는, 각 상용지도(공개지도)마다 사용하는 좌표계가 차이가 있고, 그로 인해 위경도 값이 약간 다르기 때문이다.</br>
-(다음 글들을 읽어보고, 더 깊은 내용을 공부하고 싶으면, 구글링을 해 보자.)
-먼저, `좌표계에 대한 이해` http://www.biz-gis.com/index.php?mid=pds&document_srl=65754 {:target="_blank"} </br>
-`한국 주요 좌표계 EPSG코드 및 PROJ4 인자 정리` http://www.osgeo.kr/17 {:target="_blank"}
+- 좌표(체)계: 좌표(체)계에 대한 이해가 필요한 이유는, 각 상용지도(공개지도)마다 사용하는 좌표(체)계가 차이가 있고, 그로 인해 위ㆍ경도 값이 약간 다르기 때문이다.</br>
+(다음 글들을 읽어보고, 더 깊은 내용을 공부하고 싶으면, 구글링을 해 보자.)</br>
+먼저, `좌표계에 대한 이해` ([http://www.biz-gis.com/index.php?mid=pds&document_srl=65754](http://www.biz-gis.com/index.php?mid=pds&document_srl=65754){:target="_blank"}) </br>
+`한국 주요 좌표계 EPSG코드 및 PROJ4 인자 정리` ([http://www.osgeo.kr/17](http://www.osgeo.kr/17){:target="_blank"})
 `EPSG:900913` OSM, 구글지도, 브이월드
 `EPSG:5181` 다음지도
 `EPSG:5179` 네이버지도
