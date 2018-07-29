@@ -114,13 +114,13 @@ body { height: 100%; margin: 0; padding: 0;}
 - 위도(Latitude, Y 좌표): 지구상에서 적도를 기준으로 북쪽 또는 남쪽으로 얼마나 떨어져 있는지 나타내는 위치 ([https://ko.wikipedia.org/wiki/위도](https://ko.wikipedia.org/wiki/위도){:target="_blank"})
 (헷갈리시는 분들을 위해 대한민국은 Longtitude[경도]가 항상 큰 숫자이기 때문에, `긴(Long)것이 경도, X좌표)`로 알아두시길... :)
 
-> example: "여의도 공원" 찾기
+> example: "여의도 공원" 찾기<br/>
 > (1) OSM 경위도 좌표 값 구하기
 ![](https://bbong95.github.io/assets/images/posts/2018-07-25/OSM_coords.png)
 > (2) 구글 지도 경위도 좌표 값 구하기
 > ![](https://bbong95.github.io/assets/images/posts/2018-07-25/googlemap_coords.png)
-> ([구글맵 고객센터-위도 및 경도 찾고 입력하기](https://support.google.com/maps/answer/18539?hl=ko&co=GENIE.Platform%3DDesktop){:target="_blank"})
-> ([위도 경도 찾기 구글맵으로 손쉽게!](http://g2me.tistory.com/224){:target="_blank"})
++ ([구글맵 고객센터-위도 및 경도 찾고 입력하기](https://support.google.com/maps/answer/18539?hl=ko&co=GENIE.Platform%3DDesktop){:target="_blank"})
++ ([위도 경도 찾기 구글맵으로 손쉽게!](http://g2me.tistory.com/224){:target="_blank"})
 
 
 #### OSM 배경지도
