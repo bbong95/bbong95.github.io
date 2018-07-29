@@ -100,14 +100,15 @@ body { height: 100%; margin: 0; padding: 0;}
 
 ### 3. 배경 지도 스크립트
 
-지금부터는 약간의 Geographic Informaiton System(이하, GIS)의 개념이 필요하다.</br>
-- 좌표(체)계: 좌표(체)계에 대한 이해가 필요한 이유는, 각 상용지도(공개지도)마다 사용하는 좌표(체)계가 차이가 있고, 그로 인해 위ㆍ경도 값이 약간 다르기 때문이다.</br>
-(다음 글들을 읽어보고, 더 깊은 내용을 공부하고 싶으면, 구글링을 해 보자.)</br>
-먼저, `좌표계에 대한 이해` ([http://www.biz-gis.com/index.php?mid=pds&document_srl=65754](http://www.biz-gis.com/index.php?mid=pds&document_srl=65754){:target="_blank"}) </br>
-`한국 주요 좌표계 EPSG코드 및 PROJ4 인자 정리` ([http://www.osgeo.kr/17](http://www.osgeo.kr/17){:target="_blank"})
-`EPSG:900913` OSM, 구글지도, 브이월드
-`EPSG:5181` 다음지도
-`EPSG:5179` 네이버지도
+지금부터는 약간의 `Geographic Informaiton System`(이하, `GIS`)의 개념이 필요하다.
+- 좌표(체)계: 좌표(체)계에 대한 이해가 필요한 이유는, 각 상용지도(공개지도)마다 사용하는 좌표(체)계가 차이가 있고, 그로 인해 위ㆍ경도 값이 약간 다르기 때문이다.
+(다음 글들을 읽어보고, 더 깊은 내용을 공부하고 싶으면, 구글링을 해 보자.)
+
+> - `좌표계에 대한 이해` ([http://www.biz-gis.com/index.php?mid=pds&document_srl=65754](http://www.biz-gis.com/index.php?mid=pds&document_srl=65754){:target="_blank"})
+> - `한국 주요 좌표계 EPSG코드 및 PROJ4 인자 정리` ([http://www.osgeo.kr/17](http://www.osgeo.kr/17){:target="_blank"})
+(1) `EPSG:900913` OSM, 구글지도, 브이월드
+(2) `EPSG:5181` 다음지도
+(3) `EPSG:5179` 네이버지도
 
 - 위도
 - 경도
