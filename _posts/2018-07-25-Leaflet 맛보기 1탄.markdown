@@ -61,14 +61,14 @@ URL로 넣어도 되고, leaflet 1.3.3을 다운로드([http://cdn.leafletjs.com
 body Tag 內에 배경지도를 표시할 영역을 div Tag를 사용하여 생성한다.<br/>
 여기에서 배경지도 크기를 정해주어야 하는데 이는 새로운 css파일(main.css)을 head 영역에 넣어 준다.(height:100%)
 
-##### main.css
+#### main.css
 ```css
 html { height: 100% }
 body { height: 100%; margin: 0; padding: 0;}
 .map { height: 100% } /* map 영역 전체 화면에 꽉 차게 */
 ```
 
-##### leaflet_basemap.html
+#### leaflet_basemap.html
 
 {% highlight html linenos %}
 <html>

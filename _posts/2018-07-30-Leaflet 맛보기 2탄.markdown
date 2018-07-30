@@ -18,7 +18,7 @@ author: bbong5
 **Leaflet에 다양한 배경지도 띄우기 2탄**{: style="display:inherit;text-align:center;"}
 ---
 OSM, 구글지도, 네이버지도, 다음지도, 브이월드 등 다양한 배경지도를 leaflet에서 표시해 본다.<br/>
-이번 시간에는 `다른 지도들을 Leaflet에 표시`해 본다.
+Chapter 1에서 OSM 띄우기를 해보았으니, 이번 시간에는 `다른 지도들을 Leaflet에 표시`해 본다.
 
 # Leaflet 배경지도
 
@@ -59,7 +59,11 @@ OSM, 구글지도, 네이버지도, 다음지도, 브이월드 등 다양한 배
 + 구글링 결과, 참 어렵게 "여의도공원"의 (경도:126.9222841666, 위도:37.526808823)값을 얻었다. 방법은 네이버지도 geocoding과 마찬가지로 1)여의도공원 주소(서울 영등포구 여의공원로 68)를 찾아서 2) 다음지도 geocoding API를 사용하여 주소->좌표변환 하면 된다.<br/>
 ([Javascript, 다음 지도 API 사용하여 주소의 위도, 경도 구하기](http://tedware.tistory.com/55){:target="_blank"})
 
-## 2. 배경 지도 생성
-### google map 배경지도
+## 2. Google Map 배경지도
+
+그럼 지금부터, google map을 leaflet에 표시해본다.
+지난 시간에, OSM을 올렸으니까 OSM 배경지도와 google map 배경지도를 사용자가 선택하여 선택된 배경지로를 표시하는 것 까지 해 보려고 한다.
+
+### 타일 맵 주소
 
 body Tag 內에 script를 작성하여 OSM을 띄운다.
