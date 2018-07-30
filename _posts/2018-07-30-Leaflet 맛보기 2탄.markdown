@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Leaflet 맛보기
+title: Leaflet 맛보기 Chpter. 2
 description: 
-date: 2018-07-25
+date: 2018-07-30
 categories: 
 - Leaflet
 tags: 
@@ -12,95 +12,17 @@ tags:
 - 좌표계
 - 경위도
 - Data Visualization
-- Gist
 img: 
 author: bbong5
 ---
-**Leaflet에 다양한 배경지도 띄우기**{: style="display:inherit;text-align:center;"}
+**Leaflet에 다양한 배경지도 띄우기 2탄**{: style="display:inherit;text-align:center;"}
 ---
-OSM, 구글지도, 네이버지도, 다음지도, 브이월드 등 다양한 배경지도를 leaflet에서 표시해 본다.
+OSM, 구글지도, 네이버지도, 다음지도, 브이월드 등 다양한 배경지도를 leaflet에서 표시해 본다.<br/>
+이번 시간에는 `다른 지도들을 Leaflet에 표시`해 본다.
 
 # Leaflet 배경지도
 
-가장 먼저 해야 할 것이 배경지도를 뿌려주는 것이다.<br/>
-배경지도는 오픈 된 것 (TMS: Tiled Map Service-[https://en.wikipedia.org/wiki/Tile_Map_Srviceervice](https://en.wikipedia.org/wiki/Tile_Map_Service){:target="_blank"})이 많이 있기 때문에 그것들을 사용하기로 한다.<br/>
-일단 목표는 `OSM`(Open Street Map: [https://www.openstreetmap.org/](https://www.openstreetmap.org/){:target="_blank"}), `Google Map`([https://www.google.com/maps](https://www.google.com/maps){:target="_blank"}), `네이버지도`([https://map.naver.com/](https://map.naver.com/){:target="_blank"}), `Daum지도`([http://map.daum.net/](http://map.daum.net/){:target="_blank"}), `브이월드`([http://map.vworld.kr/map/maps.do](http://map.vworld.kr/map/maps.do){:target="_blank"})등을 띄우는 것을 목표로 한다.<br/>
-각 지도들 마다 Street Map 형태, Satellite Map 형태, Hybrid Map 형태, 회색 Map 형태 등을 제공하는데, 각각 전부를 뿌려 볼 생각이다.
-
-## Leaflet Quick Start Guide
-
-이제부터, leaflet 홈페이지에 있는 `Quick Start 가이드`([https://leafletjs.com/examples/quick-start/](https://leafletjs.com/examples/quick-start/){:target="_blank"})를 보면서 따라해 본다.
-
-### 1. 사전 작업
-
-leaflet CSS 및 JS를 추가해 보자.
-URL로 넣어도 되고, leaflet 1.3.3을 다운로드([http://cdn.leafletjs.com/leaflet/v1.3.3/leaflet.zip](http://cdn.leafletjs.com/leaflet/v1.3.3/leaflet.zip))하여, 해당 경로를 추가해도 된다. (여기에서는 leaflet 1.3.3을 다운로드 하여 경로를 추가하는 방식을 사용한다.)
-
-{% highlight html linenos %}
-<html>
-
-<head>
-  <!--STEP 1: CSS 추가하기 -->
-  <!--CDN 방식 -->
-  <!--<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"/>-->
-  <!-- Download 방식 -->
-  <link rel="stylesheet" href="css/leaflet@1.3.3/leaflet.css"/>
-  <!--STEP 2: JS 추가하기 -->
-  <!--CDN 방식 -->
-  <!--<script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"></script>-->
-  <!-- Download 방식 -->
-  <script src="js/leaflet@1.3.3/leaflet.js"></script>
-</head>
-
-<body>
-</body>
-
-</html>
-{% endhighlight %}
-
-
-### 2. 배경 지도 영역 div 추가
-
-body Tag 內에 배경지도를 표시할 영역을 div Tag를 사용하여 생성한다.<br/>
-여기에서 배경지도 크기를 정해주어야 하는데 이는 새로운 css파일(main.css)을 head 영역에 넣어 준다.(height:100%)
-#### main.css
-```css
-html { height: 100% }
-body { height: 100%; margin: 0; padding: 0;}
-.map { height: 100% } /* map 영역 전체 화면에 꽉 차게 */
-```
-#### leaflet_basemap.html
-{% highlight html linenos %}
-<html>
-
-<head>
-	<!--STEP 1: CSS 추가하기 -->
-	<!--CDN 방식 -->
-	<!--<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"/>-->
-	<!-- Download 방식 -->
-	<link rel="stylesheet" href="css/leaflet@1.3.3/leaflet.css"/>
-	<!--STEP 3: 지도 영역 관련 CSS 추가하기 -->
-	<link rel="stylesheet" href="css/main.css"/>
-	<!--STEP 2: JS 추가하기 -->
-	<!--CDN 방식 -->
-	<!--<script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"></script>-->
-	<!-- Download 방식 -->
-	<script src="js/leaflet@1.3.3/leaflet.js"></script>
-</head>
-
-<body>
-	<!-- 배경지도 영역 추가하기-->
-	<div id="map" class="map"></div>
-</body>
-
-</html>
-{% endhighlight %}
-
-#### Gist에 소스 연동
-{% gist 410fed698071826323c8dfc7d73124e0 %}
-
-
-### 3. 배경 지도 스크립트
+## 1. 사전 지식
 
 지금부터는 약간의 <acronym title="Geographic Informaiton System">Geographic Informaiton System</acronym>(이하, <acronym title="Geographic Informaiton System">GIS</acronym>)의 개념이 필요하다.
 - `좌표(체)계`: 좌표(체)계에 대한 이해가 필요한 이유는, 각 상용지도(공개지도)마다 사용하는 좌표(체)계가 차이가 있고, 그로 인해 경ㆍ위도 값이 약간 다르기 때문이다.(이 차이는 사용 좌표계의 차이일 수도 있고, 지오코딩을 통해 좌표를 추출한다면 지오코딩에 사용하는 DB가 각 Vender社마다 차이가 있기 때문일 수도 있다.)
@@ -116,7 +38,7 @@ body { height: 100%; margin: 0; padding: 0;}
 - `위도(Latitude, Y 좌표)`: 지구상에서 적도를 기준으로 북쪽 또는 남쪽으로 얼마나 떨어져 있는지 나타내는 위치 ([https://ko.wikipedia.org/wiki/위도](https://ko.wikipedia.org/wiki/위도){:target="_blank"})<br/>
 (헷갈리시는 분들을 위해 대한민국은 Longtitude[경도]가 항상 큰 숫자이기 때문에, `긴(Long)것이 경도, X좌표)`로 알아두시길... :)
 
-> example: "여의도 공원" 찾기<br/>
+> [example] "여의도공원" 찾기<br/>
 > (1) OSM 경위도 좌표 값 구하기
 ![](https://bbong95.github.io/assets/images/posts/2018-07-25/OSM_coords.png)
 > (2) 구글 지도 경위도 좌표 값 구하기
@@ -134,8 +56,10 @@ body { height: 100%; margin: 0; padding: 0;}
 
 > (4) 다음지도 경위도 좌표 값 구하기
 + 훔, 다음지도도 한방에 못가져 온다. T.T 과거에는 `여기 정보 보기`라는 메뉴가 있어서 경위도 좌표를 표시해 주더니, 지금 현재 다음지도를 들어가보니, 해당 메뉴가 없어졌고, 좌표 또한 WTM의 변형 좌표계인 wcongnamul 좌표계(헐..언제적 콩나물지도를 ㄷㄷㄷㄷ)를 사용한단다....([DevTalk_](https://devtalk.kakao.com/t/topic/35844){:target="_blank"}) 또, 구글링
-+ 구글링 결과, 참 어렵게 "여의도공원"의 (경도:126.9222841666, 위도:37.526808823)값을 얻었다. 방법은 네이버지도 geocoding과 마찬가지로 (1)여의도공원 주소(서울 영등포구 여의공원로 68)를 찾아서 (2) 다음지도 geocoding API를 사용하여 주소->좌표변환 하면 된다.<br/>
++ 구글링 결과, 참 어렵게 "여의도공원"의 (경도:126.9222841666, 위도:37.526808823)값을 얻었다. 방법은 네이버지도 geocoding과 마찬가지로 1)여의도공원 주소(서울 영등포구 여의공원로 68)를 찾아서 2) 다음지도 geocoding API를 사용하여 주소->좌표변환 하면 된다.<br/>
 ([Javascript, 다음 지도 API 사용하여 주소의 위도, 경도 구하기](http://tedware.tistory.com/55){:target="_blank"})
 
+## 2. 배경 지도 생성
+#### google map 배경지도
 
-#### OSM 배경지도
+body Tag 內에 script를 작성하여 OSM을 띄운다.

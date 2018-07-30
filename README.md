@@ -14,7 +14,7 @@
   - ...
 
 #### 데이터 시각화
-  - [D3](https://d3js.org/){:target="_blank"}
+  - [D3](https://d3js.org/)
   - 각종 차트 Tools
   - 각종 Grid Tools
   - ...
