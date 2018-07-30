@@ -62,7 +62,7 @@ Chapter 1에서 OSM 띄우기를 해보았으니, 이번 시간에는 `Google Ma
 ## 2. Google Map 배경지도
 
 그럼 지금부터, google map을 leaflet에 표시해본다.
-지난 시간에, OSM을 올렸으니까([`Leaflet OSM 배경지도`](https://bbong95.github.io/leaflet.examples/leaflet_basemap.html){:target="_blank"}) OSM 배경지도와 google map 배경지도를 사용자가 선택하여 선택된 배경지로를 표시하는 것 까지 해 보려고 한다.
+지난 시간에, OSM을 올렸으니까([`Leaflet OSM 배경지도`](https://bbong95.github.io/leaflet.examples/leaflet_osm.html){:target="_blank"}) OSM 배경지도와 google map 배경지도를 사용자가 선택하여 선택된 배경지로를 표시하는 것 까지 해 보려고 한다.
 
 ### 타일 맵 주소(URL)
 
@@ -71,35 +71,36 @@ Google Map의 Tile URL 찾기가 생각보다 어렵다. 구글링 결과, 2018�
 - (참고) [QGIS](https://qgis.org/ko/site/){:target="_blank"}: 오픈소스 데스크탑 GIS
 
 `Google Map의 Tile Map URL`은 `lyrs 값 구분`에 따라
-> ###### (1) Standard Road Map : `http://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}`
+> (1) Standard Road Map : `http://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}`
 + `lyrs=m` : Standard Road Map
 + hl=en : 언어 = en(한국어는 kr로 바꾸어도 무방하다.)
 
-> ###### (2) Terrain Map : `http://mt0.google.com/vt/lyrs=p&hl=en&x={x}&y={y}&z={z}`
+> (2) Terrain Map : `http://mt0.google.com/vt/lyrs=p&hl=en&x={x}&y={y}&z={z}`
 + `lyrs=p` : Terrain
 + hl=en : 언어 = en(한국어는 kr로 바꾸어도 무방하다.)
 
-> ###### (3) Somehow Altered Road Map : `http://mt0.google.com/vt/lyrs=r&hl=en&x={x}&y={y}&z={z}`
+> (3) Somehow Altered Road Map : `http://mt0.google.com/vt/lyrs=r&hl=en&x={x}&y={y}&z={z}`
 + `lyrs=r` : Somehow Altered Road Map
 + hl=en : 언어 = en(한국어는 kr로 바꾸어도 무방하다.)
 
-> ###### (4) Satellite Only : `http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}`
+> (4) Satellite Only : `http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}`
 + `lyrs=s` : Satellite Only
 + hl=en : 언어 = en(한국어는 kr로 바꾸어도 무방하다.)
 
-> ###### (5) Terrain Only : `http://mt0.google.com/vt/lyrs=t&hl=en&x={x}&y={y}&z={z}`
+> (5) Terrain Only : `http://mt0.google.com/vt/lyrs=t&hl=en&x={x}&y={y}&z={z}`
 + `lyrs=t` : Terrain Only
 + hl=en : 언어 = en(한국어는 kr로 바꾸어도 무방하다.)
 
-> ###### (6) Hybrid : `http://mt0.google.com/vt/lyrs=y&hl=en&x={x}&y={y}&z={z}`
+> (6) Hybrid : `http://mt0.google.com/vt/lyrs=y&hl=en&x={x}&y={y}&z={z}`
 + `lyrs=y` : Hybrid
 + hl=en : 언어 = en(한국어는 kr로 바꾸어도 무방하다.)
 
-> ###### (7) Roads Only : `http://mt0.google.com/vt/lyrs=h&hl=en&x={x}&y={y}&z={z}`
+> (7) Roads Only : `http://mt0.google.com/vt/lyrs=h&hl=en&x={x}&y={y}&z={z}`
 + `lyrs=h` : Roads Only
 + hl=en : 언어 = en(한국어는 kr로 바꾸어도 무방하다.)
 
 이렇게 구분된다. 나중에 전부 다 사용하기로 하고, 일단은 (1) Standard Road Map을 Leaflet에 올려본다.
+
 
 ### Google Map 배경지도 스크립트
 
@@ -121,7 +122,7 @@ Google Map의 Tile URL 찾기가 생각보다 어렵다. 구글링 결과, 2018�
 
 Line 11에서 attribution에 Google image를 넣고 간단 설명 툴팁을 달아 보았다.
 
-## 4. 전체 소스
+## 3. 전체 소스
 
 ### 실행 URL
 
