@@ -60,6 +60,6 @@ OSM, 구글지도, 네이버지도, 다음지도, 브이월드 등 다양한 배
 ([Javascript, 다음 지도 API 사용하여 주소의 위도, 경도 구하기](http://tedware.tistory.com/55){:target="_blank"})
 
 ## 2. 배경 지도 생성
-#### google map 배경지도
+### google map 배경지도
 
 body Tag 內에 script를 작성하여 OSM을 띄운다.
