@@ -15,7 +15,7 @@ tags:
 img: 
 author: bbong5
 ---
-**Leaflet에 다양한 배경지도 띄우기 2탄**{: style="display:inherit;text-align:center;"}
+**Leaflet에 다양한 배경지도 띄우기 2탄 : Google Map 배경지도**{: style="display:inherit;text-align:center;"}
 ---
 OSM, 구글지도, 네이버지도, 다음지도, 브이월드 등 다양한 배경지도를 leaflet에서 표시해 본다.<br/>
 Chapter 1에서 OSM 띄우기를 해보았으니, 이번 시간에는 `Google Map을 Leaflet에 표시`해 본다.
