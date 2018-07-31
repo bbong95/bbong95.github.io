@@ -108,7 +108,7 @@ body Tag 內에 script를 작성하여 OSM을 띄운다.
 > (3) OSM 타일 맵 이용: `https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png` <br/>
 > (참고) [Tile Servers Wiki](https://wiki.openstreetmap.org/wiki/Tile_servers){:target="_blank"}
 > 
-> (4) 속성: leaflet의 :Link: [`attribution`](https://leafletjs.com/reference-1.3.2.html#control-attribution-option){:target="_blank"}control 참고 
+> (4) 속성: leaflet의 :link: [`attribution`](https://leafletjs.com/reference-1.3.2.html#control-attribution-option){:target="_blank"}control 참고 
 
 {% highlight html linenos %}
 	<div id="map" class="map"></div>
@@ -132,7 +132,7 @@ body Tag 內에 script를 작성하여 OSM을 띄운다.
 
 #### 실행 URL
 
-Click :Play: [`Leaflet OSM 배경지도`](https://bbong95.github.io/leaflet.examples/leaflet_basemap.html){:target="_blank"}
+Click :arrow_forward: [`Leaflet OSM 배경지도`](https://bbong95.github.io/leaflet.examples/leaflet_basemap.html){:target="_blank"}
 
 #### Gist에 소스 연동
 
