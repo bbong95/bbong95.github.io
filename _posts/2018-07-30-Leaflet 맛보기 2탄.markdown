@@ -28,15 +28,15 @@ Chapter 1에서 OSM 띄우기를 해보았으니, 이번 시간에는 `Google Ma
 - `좌표(체)계`: 좌표(체)계에 대한 이해가 필요한 이유는, 각 상용지도(공개지도)마다 사용하는 좌표(체)계가 차이가 있고, 그로 인해 경ㆍ위도 값이 약간 다르기 때문이다.(이 차이는 사용 좌표계의 차이일 수도 있고, 지오코딩을 통해 좌표를 추출한다면 지오코딩에 사용하는 DB가 각 Vender社마다 차이가 있기 때문일 수도 있다.)
 (다음 글들을 읽어보고, 더 깊은 내용을 공부하고 싶으면, 구글링을 해 보자.)
 
-> (1) `좌표계에 대한 이해` ([http://www.biz-gis.com/index.php?mid=pds&document_srl=65754](http://www.biz-gis.com/index.php?mid=pds&document_srl=65754){:target="_blank"})
+> (1) `좌표계에 대한 이해` ([http://www.biz-gis.com/index.php?mid=pds&document_srl=65754](http://www.biz-gis.com/index.php?mid=pds&document_srl=65754)<i class="fa fa-external-link"></i>{:target="_blank"})
 > 
-> (2) `한국 주요 좌표계 EPSG코드 및 PROJ4 인자 정리` ([http://www.osgeo.kr/17](http://www.osgeo.kr/17){:target="_blank"})
+> (2) `한국 주요 좌표계 EPSG코드 및 PROJ4 인자 정리` ([http://www.osgeo.kr/17](http://www.osgeo.kr/17)<i class="fa fa-external-link"></i>{:target="_blank"})
 + **EPSG:900913** OSM, 구글지도, 브이월드
 + **EPSG:5181** 다음지도
 + **EPSG:5179** 네이버지도
 
-- `경도(Longtitude, X 좌표)`: 지구상에서 본초 자오선을 기준으로 동쪽 또는 서쪽으로 얼마나 떨어져 있는지 나타내는 위치 ([https://ko.wikipedia.org/wiki/경도](https://ko.wikipedia.org/wiki/경도){:target="_blank"})
-- `위도(Latitude, Y 좌표)`: 지구상에서 적도를 기준으로 북쪽 또는 남쪽으로 얼마나 떨어져 있는지 나타내는 위치 ([https://ko.wikipedia.org/wiki/위도](https://ko.wikipedia.org/wiki/위도){:target="_blank"})<br/>
+- `경도(Longtitude, X 좌표)`: 지구상에서 본초 자오선을 기준으로 동쪽 또는 서쪽으로 얼마나 떨어져 있는지 나타내는 위치 ([https://ko.wikipedia.org/wiki/경도](https://ko.wikipedia.org/wiki/경도)<i class="fa fa-external-link"></i>{:target="_blank"})
+- `위도(Latitude, Y 좌표)`: 지구상에서 적도를 기준으로 북쪽 또는 남쪽으로 얼마나 떨어져 있는지 나타내는 위치 ([https://ko.wikipedia.org/wiki/위도](https://ko.wikipedia.org/wiki/위도)<i class="fa fa-external-link"></i>{:target="_blank"})<br/>
 (헷갈리시는 분들을 위해 대한민국은 Longtitude[경도]가 항상 큰 숫자이기 때문에, `긴(Long)것이 경도, X좌표`로 알아두시길... :)
 
 > [example] "**여의도공원**" 찾기<br/>
@@ -44,33 +44,33 @@ Chapter 1에서 OSM 띄우기를 해보았으니, 이번 시간에는 `Google Ma
 ![](https://bbong95.github.io/assets/images/posts/2018-07-25/OSM_coords.png)
 > (2) 구글 지도 경위도 좌표 값 구하기
 ![](https://bbong95.github.io/assets/images/posts/2018-07-25/googlemap_coords.png)
-+ [구글맵 고객센터-위도 및 경도 찾고 입력하기](https://support.google.com/maps/answer/18539?hl=ko&co=GENIE.Platform%3DDesktop){:target="_blank"}
-+ [위도 경도 찾기 구글맵으로 손쉽게!](http://g2me.tistory.com/224){:target="_blank"}
++ [구글맵 고객센터-위도 및 경도 찾고 입력하기](https://support.google.com/maps/answer/18539?hl=ko&co=GENIE.Platform%3DDesktop)<i class="fa fa-external-link"></i>{:target="_blank"}
++ [위도 경도 찾기 구글맵으로 손쉽게!](http://g2me.tistory.com/224)<i class="fa fa-external-link"></i>{:target="_blank"}
 
 > (3) 네이버 지도 경위도 좌표 값 구하기
-+ 과거에는 **URL복사하기**라는 것이 있어서 경위도 좌표를 쉽게 가져올 수 있었지만, 지금 현재 확인 결과 URL관련 암호화([네이버 개발자 센터](https://developers.naver.com/forum/posts/9593){:target="_blank"})를 통해 가져올 수 있는 방법이 없다. 많이 귀찮기는 하지만, 네이버 지도의 **geocode API**([네이버 지도 API 명세](https://developers.naver.com/docs/map/overview/){:target="_blank"})를 사용하여 주소를 좌표로 변환하여 확인하는 방법이 있다.(배보다 배꼽이 커지므로, 구글링 :)
++ 과거에는 **URL복사하기**라는 것이 있어서 경위도 좌표를 쉽게 가져올 수 있었지만, 지금 현재 확인 결과 URL관련 암호화([네이버 개발자 센터](https://developers.naver.com/forum/posts/9593)<i class="fa fa-external-link"></i>{:target="_blank"})를 통해 가져올 수 있는 방법이 없다. 많이 귀찮기는 하지만, 네이버 지도의 **geocode API**([네이버 지도 API 명세](https://developers.naver.com/docs/map/overview/)<i class="fa fa-external-link"></i>{:target="_blank"})를 사용하여 주소를 좌표로 변환하여 확인하는 방법이 있다.(배보다 배꼽이 커지므로, 구글링 :)
 + 구글링 결과, 친절하게도 작업을 해 놓으신 분들이 계신다.("여의도공원"의 경위도 값(경도:126.9223516, 위도:37.5268290))<br/>
-	+ [[일반Tip] 주소로 네이버맵/네이버지도 좌표값 알아내기](http://blog.goodkiss.co.kr/entry/주소로-네이버지도-좌표값-알아내기){:target="_blank"}
-	+ [실제 주소-> 좌표변환](http://f.goodkiss.co.kr/naver/naverMap.html){:target="_blank"}
-	+ [주소를 이용 위경도 좌표로 변환(네이버 MAP API용 소스변환 포함)](http://savour.tistory.com/299){:target="_blank"}
-	+ (참고: 재미있는 내용) [네이버 지도 위도,경도 구하기(엑셀 수식 이용하기)](http://blog.opid.kr/246){:target="_blank"}<br/>
+	+ [[일반Tip] 주소로 네이버맵/네이버지도 좌표값 알아내기](http://blog.goodkiss.co.kr/entry/주소로-네이버지도-좌표값-알아내기)<i class="fa fa-external-link"></i>{:target="_blank"}
+	+ [실제 주소-> 좌표변환](http://f.goodkiss.co.kr/naver/naverMap.html)<i class="fa fa-external-link"></i>{:target="_blank"}
+	+ [주소를 이용 위경도 좌표로 변환(네이버 MAP API용 소스변환 포함)](http://savour.tistory.com/299)<i class="fa fa-external-link"></i>{:target="_blank"}
+	+ (참고: 재미있는 내용) [네이버 지도 위도,경도 구하기(엑셀 수식 이용하기)](http://blog.opid.kr/246)<i class="fa fa-external-link"></i>{:target="_blank"}<br/>
 만들어 주신거 사용하는 걸로..:)
 
 > (4) 다음지도 경위도 좌표 값 구하기
-+ 훔, 다음지도도 한방에 못가져 온다. T.T 과거에는 **여기 정보 보기**라는 메뉴가 있어서 경위도 좌표를 표시해 주더니, 지금 현재 다음지도를 들어가보니, 해당 메뉴가 없어졌고, 좌표 또한 WTM의 변형 좌표계인 wcongnamul 좌표계(헐..언제적 콩나물지도를 ㄷㄷㄷㄷ)를 사용한단다....([DevTalk_](https://devtalk.kakao.com/t/topic/35844){:target="_blank"}) 또, 구글링
++ 훔, 다음지도도 한방에 못가져 온다. T.T 과거에는 **여기 정보 보기**라는 메뉴가 있어서 경위도 좌표를 표시해 주더니, 지금 현재 다음지도를 들어가보니, 해당 메뉴가 없어졌고, 좌표 또한 WTM의 변형 좌표계인 wcongnamul 좌표계(헐..언제적 콩나물지도를 ㄷㄷㄷㄷ)를 사용한단다....([DevTalk_](https://devtalk.kakao.com/t/topic/35844)<i class="fa fa-external-link"></i>{:target="_blank"}) 또, 구글링
 + 구글링 결과, 참 어렵게 "여의도공원"의 (경도:126.9222841666, 위도:37.526808823)값을 얻었다. 방법은 네이버지도 geocoding과 마찬가지로 1)여의도공원 주소(서울 영등포구 여의공원로 68)를 찾아서 2) 다음지도 geocoding API를 사용하여 주소->좌표변환 하면 된다.<br/>
-	+ [Javascript, 다음 지도 API 사용하여 주소의 위도, 경도 구하기](http://tedware.tistory.com/55){:target="_blank"}
+	+ [Javascript, 다음 지도 API 사용하여 주소의 위도, 경도 구하기](http://tedware.tistory.com/55)<i class="fa fa-external-link"></i>{:target="_blank"}
 
 ## 2. Google Map 배경지도
 
 그럼 지금부터, google map을 leaflet에 표시해본다.
-지난 시간에, OSM을 올렸으니까([`Leaflet OSM 배경지도`](https://bbong95.github.io/leaflet.examples/leaflet_osm.html){:target="_blank"}) OSM 배경지도와 google map 배경지도를 사용자가 선택하여 선택된 배경지로를 표시하는 것 까지 해 보려고 한다.
+지난 시간에, OSM을 올렸으니까([`Leaflet OSM 배경지도`](https://bbong95.github.io/leaflet.examples/leaflet_osm.html)<i class="fa fa-external-link"></i>{:target="_blank"}) OSM 배경지도와 google map 배경지도를 사용자가 선택하여 선택된 배경지로를 표시하는 것 까지 해 보려고 한다.
 
 ### 타일 맵 주소(URL)
 
 Google Map의 Tile URL 찾기가 생각보다 어렵다. 구글링 결과, 2018년 3월에 올라온 글(최근에 작성된 글이니 url이 맞겠지...ㅎㅎㅎ)을 발견했다.
-- [Google Map을 QGIS3에 올리는 방법](https://www.hatarilabs.com/ih-en/how-to-add-a-google-map-in-qgis-3-tutorial){:target="_blank"}
-- (참고) [QGIS](https://qgis.org/ko/site/){:target="_blank"}: 오픈소스 데스크탑 GIS
+- [Google Map을 QGIS3에 올리는 방법](https://www.hatarilabs.com/ih-en/how-to-add-a-google-map-in-qgis-3-tutorial)<i class="fa fa-external-link"></i>{:target="_blank"}
+- (참고) [QGIS](https://qgis.org/ko/site/)<i class="fa fa-external-link"></i>{:target="_blank"}: 오픈소스 데스크탑 GIS
 
 `Google Map의 Tile Map URL`은 `lyrs 값 구분`에 따라
 > (1) **Standard Road Map** : `http://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}`
@@ -128,10 +128,10 @@ Line 11에서 attribution에 Google image를 넣고 간단 설명 툴팁을 달�
 
 ### 실행 URL
 
-Click [`Leaflet Google Map 배경지도`](https://bbong95.github.io/leaflet.examples/leaflet_googlemap.html)<i class="fa fa-external-link-alt"></i>{:target="_blank"}
+[`Leaflet Google Map 배경지도`](https://bbong95.github.io/leaflet.examples/leaflet_googlemap.html)<i class="fa fa-external-link"></i>{:target="_blank"}
 
 ### 전체 소스 URL
-[`https://github.com/bbong95/leaflet.examples`](https://github.com/bbong95/leaflet.examples){:target="_blank"}
+[`https://github.com/bbong95/leaflet.examples`](https://github.com/bbong95/leaflet.examples)<i class="fa fa-external-link"></i>{:target="_blank"}
 
 ### Gist에 소스 연동
 
