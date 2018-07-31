@@ -128,7 +128,7 @@ Line 11에서 attribution에 Google image를 넣고 간단 설명 툴팁을 달�
 
 ### 실행 URL
 
-Click :arrow_forward: [`Leaflet Google Map 배경지도`](https://bbong95.github.io/leaflet.examples/leaflet_googlemap.html){:target="_blank"}
+Click <i class="fas fa-hand-point-right" aria-hidden="true" style="color:#c7254e"></i> [`Leaflet Google Map 배경지도`](https://bbong95.github.io/leaflet.examples/leaflet_googlemap.html){:target="_blank"}
 
 ### 전체 소스 URL
 [`https://github.com/bbong95/leaflet.examples`](https://github.com/bbong95/leaflet.examples){:target="_blank"}
