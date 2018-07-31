@@ -21,13 +21,13 @@ OSM, 구글지도, 네이버지도, 다음지도, 브이월드 등 다양한 배
 # Leaflet 배경지도
 
 가장 먼저 해야 할 것이 배경지도를 뿌려주는 것이다.<br/>
-배경지도는 오픈 된 것 (TMS: Tiled Map Service-[https://en.wikipedia.org/wiki/Tile_Map_Srviceervice](https://en.wikipedia.org/wiki/Tile_Map_Service){:target="_blank"})이 많이 있기 때문에 그것들을 사용하기로 한다.<br/>
-일단 목표는 `OSM`(Open Street Map: [https://www.openstreetmap.org/](https://www.openstreetmap.org/){:target="_blank"}), `Google Map`([https://www.google.com/maps](https://www.google.com/maps){:target="_blank"}), `네이버지도`([https://map.naver.com/](https://map.naver.com/){:target="_blank"}), `Daum지도`([http://map.daum.net/](http://map.daum.net/){:target="_blank"}), `브이월드`([http://map.vworld.kr/map/maps.do](http://map.vworld.kr/map/maps.do){:target="_blank"})등을 띄우는 것을 목표로 한다.<br/>
+배경지도는 오픈 된 것 (TMS: Tiled Map Service-[https://en.wikipedia.org/wiki/Tile_Map_Srviceervice](https://en.wikipedia.org/wiki/Tile_Map_Service){:target="_blank"} <i class="fa fa-external-link"></i>)이 많이 있기 때문에 그것들을 사용하기로 한다.<br/>
+일단 목표는 `OSM`(Open Street Map: [https://www.openstreetmap.org/](https://www.openstreetmap.org/){:target="_blank"} <i class="fa fa-external-link"></i>), `Google Map`([https://www.google.com/maps](https://www.google.com/maps){:target="_blank"} <i class="fa fa-external-link"></i>), `네이버지도`([https://map.naver.com/](https://map.naver.com/){:target="_blank"} <i class="fa fa-external-link"></i>), `Daum지도`([http://map.daum.net/](http://map.daum.net/){:target="_blank"} <i class="fa fa-external-link"></i>), `브이월드`([http://map.vworld.kr/map/maps.do](http://map.vworld.kr/map/maps.do){:target="_blank"} <i class="fa fa-external-link"></i>)등을 띄우는 것을 목표로 한다.<br/>
 각 지도들 마다 Street Map 형태, Satellite Map 형태, Hybrid Map 형태, 회색 Map 형태 등을 제공하는데, 각각 전부를 뿌려 볼 생각이다.
 
 ## Leaflet Quick Start Guide
 
-이제부터, leaflet 홈페이지에 있는 `Quick Start 가이드`([https://leafletjs.com/examples/quick-start/](https://leafletjs.com/examples/quick-start/){:target="_blank"})를 보면서 따라해 본다.
+이제부터, leaflet 홈페이지에 있는 `Quick Start 가이드`([https://leafletjs.com/examples/quick-start/](https://leafletjs.com/examples/quick-start/){:target="_blank"} <i class="fa fa-external-link"></i>)를 보면서 따라해 본다.
 
 ### 1. 사전 작업
 
@@ -106,33 +106,33 @@ body Tag 內에 script를 작성하여 OSM을 띄운다.
 > (2) 줌 레벨: 7레벨
 > 
 > (3) OSM 타일 맵 이용: `https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png` <br/>
-> (참고) [Tile Servers Wiki](https://wiki.openstreetmap.org/wiki/Tile_servers){:target="_blank"}
+> (참고) [Tile Servers Wiki](https://wiki.openstreetmap.org/wiki/Tile_servers){:target="_blank"} <i class="fa fa-external-link"></i>
 > 
-> (4) 속성: leaflet의 :link: [`attribution`](https://leafletjs.com/reference-1.3.2.html#control-attribution-option){:target="_blank"}control 참고 
+> (4) 속성: leaflet의 :link: [`attribution`](https://leafletjs.com/reference-1.3.2.html#control-attribution-option){:target="_blank"} <i class="fa fa-external-link"></i> control 참고 
 
 {% highlight html linenos %}
-	<div id="map" class="map"></div>
-	<script>
-		var lat = 36.1358642; //위도
-		var lng = 128.0785804; //경도
-		var zoom = 7; //줌 레벨
-		var mymap = L.map('map', {
-			center: [lat, lng],
-			zoom: zoom
-		});
-		//L.tileLayer('http://xdworld.vworld.kr:8080/2d/Base/service/{z}/{x}/{y}.png').addTo(mymap); //브이월드 지도
-		//L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mymap); //OSM
-		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' //화면 오른쪽 하단 attributors
-		}).addTo(mymap);
-	</script>
+<div id="map" class="map"></div>
+<script>
+	var lat = 36.1358642; //위도
+	var lng = 128.0785804; //경도
+	var zoom = 7; //줌 레벨
+	var mymap = L.map('map', {
+	center: [lat, lng],
+	zoom: zoom
+	});
+	//L.tileLayer('http://xdworld.vworld.kr:8080/2d/Base/service/{z}/{x}/{y}.png').addTo(mymap); //브이월드 지도
+	//L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mymap); //OSM
+	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' //화면 오른쪽 하단 attributors
+	}).addTo(mymap);
+</script>
 {% endhighlight %}
 
 ### 4. 전체 소스
 
 #### 실행 URL
 
-Click :arrow_forward: [`Leaflet OSM 배경지도`](https://bbong95.github.io/leaflet.examples/leaflet_basemap.html){:target="_blank"}
+Click :arrow_forward: [`Leaflet OSM 배경지도`](https://bbong95.github.io/leaflet.examples/leaflet_basemap.html){:target="_blank"} <i class="fa fa-external-link"></i>
 
 #### Gist에 소스 연동
 
