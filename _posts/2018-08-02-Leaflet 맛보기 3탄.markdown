@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Leaflet 맛보기 Chpter. 3
+title: Leaflet 맛보기 Chapter. 3
 description: 
 date: 2018-08-02
 categories: 
