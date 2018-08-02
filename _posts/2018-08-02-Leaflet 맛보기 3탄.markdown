@@ -1,0 +1,154 @@
+---
+layout: post
+title: Leaflet 맛보기 Chpter. 3
+description: 
+date: 2018-08-02
+categories: 
+- Leaflet
+tags: 
+- Leaflet
+- 배경지도
+- 네이버지도
+- KoreanTmsProviders
+- Pro4j
+- proj4leaflet
+img: 
+author: bbong5
+---
+**Leaflet에 다양한 배경지도 띄우기 [3탄]<br/><i class="fa fa-quote-left"></i> 네이버 지도(Naver Map) <i class="fa fa-quote-right"></i> 배경지도**{: style="display:inherit;text-align:center;"}
+---
+OSM, 구글지도, 네이버지도, 다음지도, 브이월드 등 다양한 배경지도를 leaflet에서 표시해 본다.<br/>
+Chapter 2에서 Google Map 띄우기를 해보았고, 이번 시간에는 `네이버 지도(Naver Map)를 Leaflet에 표시`해 본다.
+
+# Leaflet 배경지도
+
+지금부터 소개하는 Tile Map들은 모두 국내에서 제작 및 서비스 되는 지도들로써, 가장 최신의 타일맵 URL정보를 획득하여 Leaflet에 표시하는 것을 목표로 한다.
+
+## 1. 네이버 지도
+
+### 타일 맵 주소(URL)
+
+네이버지도의 Tile URL을 구글링을 통해 찾았지만, 최신 URL이 아닌 2016년도 URL이다. 또한, 기본 Road Map의 URL만 있다.
+- [QGIS의 다음, 네이버지도 업데이트 방법](http://snugis.tistory.com/120){:target="_blank"} <i class="fa fa-external-link"></i>
+
+우리는 네이버에서 제공하는 모든 지도 유형을 전부 사용할 예정이므로, 전수 조사를 해보자.
+네이버 지도 tile map url을 찾는 전체적인 프로세스는 다음과 같다.<br/>
+![](../../../../../assets/images/posts/2018-08-01/naver-map-tile-url.png)
+(설명)
+> (1) 브라우저에서 네이버지도 사이트 open<br/>
+> (2) 개발자 도구를 열어(IE, Chrome의 경우 F12) Network Tab 클릭<br/>
+> (3) 새로고침(F5)를 누르면, 주르륵 화면에 표시되는 파일들이 나타나는데, 이 중에서 특정 지도 이미지 파일을 선택하여 Headers 정보에서 URL 확인
+
+<br/>
+`네이버지도의 Tile Map URL`은 `Tile Image 저장 directory 이름`에 따라
+> (1) **일반지도(Standard Road Map)** :<br/> `https://simg.pstatic.net/onetile/get/195/0/0/{z}/{x}/{y}/bl_vc_bg/ol_vc_an`
++ `bl_vc_bg` : 일반지도(Standard Road Map)를 의미함.
+
+> (2) **지형도(Terrain Map)** :<br/> `https://simg.pstatic.net/onetile/get/195/0/0/{z}/{x}/{y}/bl_tn_bg/ol_vc_bg/ol_vc_an`
++ `bl_tn_bg` : 지형도(Terrain)를 의미함.
+
+> (3) **위성지도(Satellite Only)** :<br/> `https://simg.pstatic.net/onetile/get/195/0/1/{z}/{x}/{y}/bl_st_bg`
++ `bl_st_bg` : 위성지도(Satellite Only)를 의미함.
+
+> (4) **위성지도+라벨 중첩지도(Hybrid)** :<br/> `https://simg.pstatic.net/onetile/get/195/0/0/{z}/{x}/{y}/empty/ol_st_rd/ol_st_an`
++ `ol_st_rd` : 위성지도+라벨 중첩지도(Hybrid)를 의미함.
+
+> (5) **지적편집도(Cadastral)** :<br/> `https://simg.pstatic.net/onetile/get/195/0/0/{z}/{x}/{y}/empty/ol_lp_cn`
++ `ol_lp_cn` : 지적편집도(Cadastral)를 의미함.
+
+> (6) **교통상황지도(Traffic)** :<br/> `https://simg.pstatic.net/onetile/get/195/201973/0/{z}/{x}/{y}/empty/ol_tr_rt/ol_vc_an`
++ `ol_tr_rt` : 교통상황지도(Traffic)를 의미함.
+
+> (7) **자전거도로지도(Bicycle)** :<br/> `https://simg.pstatic.net/onetile/get/195/0/0/{z}/{x}/{y}/empty/ol_bc_hb`
++ `ol_bc_hb` : 자전거도로지도(Bicycle)를 의미함.
+
+> (8) **거리뷰지도(Street View)** :<br/> `https://simg.pstatic.net/onetile/get/195/0/0/{z}/{x}/{y}/empty/ol_pn_rd/ol_vc_an?dv=1807.003`
++ `ol_pn_rd` : 거리뷰지도(Street View)를 의미함.
+
+이렇게 구분된다. 나중에 전부 다 사용하기로 하고, 일단은 (1) 일반지도(Standard Road Map)를 Leaflet에 올려본다.
+
+### Leaflet.KoreanTmsProviders
+
+추후에 다양한 지도들을 전부 다 표시하기위해, [`Leaflet Plugins`](https://leafletjs.com/plugins.html){:target="_blank"} <i class="fa fa-external-link"></i>에서 **Basemap providers**中 **Leaflet.KoreanTmsProviders**를 이용하기로 한다.(여기에서는 (2) 업그레이드 버전을 사용한다.)
+> (1) 초기 버전(Leaflet 0.7 version 사용)
++ 원작者 : Seong Choi님(tontita)
++ Github URL : [https://github.com/tontita](https://github.com/tontita){:target="_blank"} <i class="fa fa-external-link"></i>
++ Plugin URL : [https://github.com/tontita/Leaflet.KoreanTmsProviders](https://github.com/tontita/Leaflet.KoreanTmsProviders){:target="_blank"} <i class="fa fa-external-link"></i>
+
+> (2) 업그레이드 버전(Leaflet 1.2 version 사용)
++ 원작者 : Yun Joonghyeon님(joongtang)
++ Github URL : [https://github.com/joongtang](https://github.com/joongtang){:target="_blank"} <i class="fa fa-external-link"></i>
++ Plugin URL : [https://github.com/joongtang/Leaflet.KoreanTmsProviders](https://github.com/joongtang/Leaflet.KoreanTmsProviders){:target="_blank"} <i class="fa fa-external-link"></i>
+
+간단하게 설명하면, Leaflet에서 기본 제공하는 좌표(체)계는 [`EPSG:4326`](https://leafletjs.com/reference-1.3.2.html#projection-l-projection-lonlat){:target="_blank"} <i class="fa fa-external-link"></i>, [`EPSG:3395`](https://leafletjs.com/reference-1.3.2.html#projection-l-projection-mercator){:target="_blank"} <i class="fa fa-external-link"></i>, [`EPSG:3857`](https://leafletjs.com/reference-1.3.2.html#projection-l-projection-sphericalmercator){:target="_blank"} <i class="fa fa-external-link"></i>인데, 이들 이외에 좌표(체)계를 사용하여 서비스되는 지도들은 **좌표(체)계 변환(or 좌표(체)계 정의)**을 통해 Leaflet에 표시할 수 있다. (좌표(체)계에 대한 조금더 상세한 내용은 [**Leaflet 맛보기 2탄-1.사전지식**](https://bbong95.github.io/leaflet/2018/07/30/Leaflet-맛보기-2탄/#1-사전-지식){:target="_blank"} <i class="fa fa-external-link"></i>)을 참고한다.)<br/>
+**Leaflet.KoreanTmsProviders**는 국내에서 서비스 되고 있는 지도(네이버지도, 다음지도, 브이월드지도)들의 좌표(체)계를 정의하고, 이를 이용하여 Leaflet에 표시할 수 있도록 만들어놓은 자바스크립트 plugin이다. 여기에 더해서, 향후에 올레맵, 바로e맵도 추가해 볼 예정이다.
+
+### Naver Map 배경지도 스크립트
+
+#### Leaflet.KoreanTmsProviders : Naver Map 부분
+> (1) 좌표(체)계 정의: **EPSG:5179**
+{% highlight javascript linenos %}
+L.Proj.CRS.Naver = new L.Proj.CRS(
+	'EPSG:5179',
+	'+proj=tmerc +lat_0=38 +lon_0=127.5 +k=0.9996 +x_0=1000000 +y_0=2000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs',
+	{
+	resolutions: [2048, 1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1, 0.5, 0.25],
+	origin: [90112, 1192896],
+	bounds: L.bounds([90112, 1192896], [1990673, 2761664])
+	}
+);
+{% endhighlight %}
+
+> (2) 기본 설정 : **Tile image URL**설정, 앞에 정의된 **CRS** 설정, 기타 **옵션들** 설정
+{% highlight javascript linenos %}
+NaverMap: {
+	url: 'https://simg.pstatic.net/onetile/get/195/0/0/{z}/{x}/{y}/bl_vc_bg/ol_vc_an',
+	crs: L.Proj.CRS.Naver, 
+	options: {
+		maxZoom: 13, 
+		minZoom: 0,
+		zoomOffset: 1,
+		subdomains: '1234',
+		continuousWorld: true,
+		tms: true,
+		attribution: 'Map data &copy; <a href="https://map.naver.com/"><strong>Naver Map</strong></a>'
+		},
+	variants: {
+		Street: {},
+		Satellite: {
+			url: 'https://simg.pstatic.net/onetile/get/195/0/1/{z}/{x}/{y}/bl_st_bg'
+		}, 
+		Cadastral: {
+			url: 'https://simg.pstatic.net/onetile/get/195/0/0/{z}/{x}/{y}/empty/ol_lp_cn'
+		},
+		Physical: {
+			url: 'https://simg.pstatic.net/onetile/get/195/0/0/{z}/{x}/{y}/bl_tn_bg/ol_vc_bg/ol_vc_an'
+		},
+		Hybrid: { 
+			url: 'https://simg.pstatic.net/onetile/get/195/0/0/{z}/{x}/{y}/empty/ol_st_rd/ol_st_an'
+		},
+		Bicycle: {
+			url: 'https://simg.pstatic.net/onetile/get/195/0/0/{z}/{x}/{y}/empty/ol_bc_hb'
+		},
+		Traffic: {
+			url: 'https://simg.pstatic.net/onetile/get/195/201973/0/{z}/{x}/{y}/empty/ol_tr_rt/ol_vc_an'
+		},
+		StreetView: {
+			url: 'https://simg.pstatic.net/onetile/get/195/0/0/{z}/{x}/{y}/empty/ol_pn_rd/ol_vc_an?dv=1807.003'
+		}
+	}
+},
+{% endhighlight %}
+
+## 3. 전체 소스
+
+### 실행 URL
+
+[`Leaflet 네이버지도(Naver Map) 배경지도`](https://bbong95.github.io/leaflet.examples/leaflet-navermap.html){:target="_blank"} <i class="fa fa-external-link"></i>
+
+### 전체 소스 URL
+[`https://github.com/bbong95/leaflet.examples`](https://github.com/bbong95/leaflet.examples){:target="_blank"} <i class="fa fa-external-link"></i>
+
+### Gist에 소스 연동
+
+{% gist e6ee3e570aed05242607d338886bbc7c %}

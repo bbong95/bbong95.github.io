@@ -4,7 +4,7 @@ title:  시작
 description: 
 date:   2018-07-23
 categories: 
-- 기타
+- etc
 tags: 
 - 시작
 - start

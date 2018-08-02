@@ -15,7 +15,7 @@ tags:
 img: 
 author: bbong5
 ---
-**Leaflet에 다양한 배경지도 띄우기 2탄 : Google Map 배경지도**{: style="display:inherit;text-align:center;"}
+**Leaflet에 다양한 배경지도 띄우기 [2탄]<br/><i class="fa fa-quote-left"></i> Google Map <i class="fa fa-quote-right"></i> 배경지도**{: style="display:inherit;text-align:center;"}
 ---
 OSM, 구글지도, 네이버지도, 다음지도, 브이월드 등 다양한 배경지도를 leaflet에서 표시해 본다.<br/>
 Chapter 1에서 OSM 띄우기를 해보았으니, 이번 시간에는 `Google Map을 Leaflet에 표시`해 본다.
@@ -31,9 +31,9 @@ Chapter 1에서 OSM 띄우기를 해보았으니, 이번 시간에는 `Google Ma
 > (1) `좌표계에 대한 이해` ([http://www.biz-gis.com/index.php?mid=pds&document_srl=65754](http://www.biz-gis.com/index.php?mid=pds&document_srl=65754){:target="_blank"} <i class="fa fa-external-link"></i>)
 > 
 > (2) `한국 주요 좌표계 EPSG코드 및 PROJ4 인자 정리` ([http://www.osgeo.kr/17](http://www.osgeo.kr/17){:target="_blank"} <i class="fa fa-external-link"></i>)
-+ **EPSG:900913** OSM, 구글지도, 브이월드
-+ **EPSG:5181** 다음지도
-+ **EPSG:5179** 네이버지도
++ **EPSG:3857[900913]** : OSM, 구글지도, 브이월드
++ **EPSG:5181[중부원점(GRS80)]** : 다음지도
++ **EPSG:5179[UTM-K(GRS80)]** 네이버지도, 올레지도, 바로e맵(국토지리정보원 국토정보맵)
 
 - `경도(Longtitude, X 좌표)`: 지구상에서 본초 자오선을 기준으로 동쪽 또는 서쪽으로 얼마나 떨어져 있는지 나타내는 위치 ([https://ko.wikipedia.org/wiki/경도](https://ko.wikipedia.org/wiki/경도){:target="_blank"} <i class="fa fa-external-link"></i>)
 - `위도(Latitude, Y 좌표)`: 지구상에서 적도를 기준으로 북쪽 또는 남쪽으로 얼마나 떨어져 있는지 나타내는 위치 ([https://ko.wikipedia.org/wiki/위도](https://ko.wikipedia.org/wiki/위도){:target="_blank"} <i class="fa fa-external-link"></i>)<br/>
@@ -64,7 +64,7 @@ Chapter 1에서 OSM 띄우기를 해보았으니, 이번 시간에는 `Google Ma
 ## 2. Google Map 배경지도
 
 그럼 지금부터, google map을 leaflet에 표시해본다.
-지난 시간에, OSM을 올렸으니까([`Leaflet OSM 배경지도`](https://bbong95.github.io/leaflet.examples/leaflet_osm.html){:target="_blank"} <i class="fa fa-external-link"></i>) OSM 배경지도와 google map 배경지도를 사용자가 선택하여 선택된 배경지로를 표시하는 것 까지 해 보려고 한다.
+지난 시간에, OSM을 올렸으니까([`Leaflet OSM 배경지도`](https://bbong95.github.io/leaflet.examples/leaflet_osm.html){:target="_blank"} <i class="fa fa-external-link"></i>) OSM 배경지도와 google map 배경지도를 사용자가 선택하여 선택된 배경지도를 표시하는 것 까지 해 보려고 한다.
 
 ### 타일 맵 주소(URL)
 
@@ -108,7 +108,7 @@ Google Map의 Tile URL 찾기가 생각보다 어렵다. 구글링 결과, 2018�
 
 {% highlight html linenos %}
 <div id="map" class="map"></div>
-  <script>
+<script>
 	var lat = 36.1358642; //위도
 	var lng = 128.0785804; //경도
 	var zoom = 7; //줌 레벨
@@ -118,8 +118,8 @@ Google Map의 Tile URL 찾기가 생각보다 어렵다. 구글링 결과, 2018�
 	});
 	L.tileLayer('https://mt0.google.com/vt/lyrs=m&hl=kr&x={x}&y={y}&z={z}', {
 		attribution: '&copy; <a target="_blank" href="https://maps.google.com/maps?ll=36.1358642,128.0785804&amp;z=13&amp;t=m&amp;hl=ko-KR&amp;gl=US&amp;mapclient=apiv3" title="Google 지도에서 이 지역을 보려면 클릭하세요." ><img alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/google4.png" draggable="false"></a>' //화면 오른쪽 하단 attributors
-		}).addTo(mymap);
-  </script>
+	}).addTo(mymap);
+</script>
 {% endhighlight %}
 
 Line 11에서 attribution에 Google image를 넣고 간단 설명 툴팁을 달아 보았다.
@@ -133,6 +133,6 @@ Line 11에서 attribution에 Google image를 넣고 간단 설명 툴팁을 달�
 ### 전체 소스 URL
 [`https://github.com/bbong95/leaflet.examples`](https://github.com/bbong95/leaflet.examples){:target="_blank"} <i class="fa fa-external-link"></i>
 
-### Gist에 소스 연동
+### Gist 소스 연동
 
 {% gist 5a6fb0b945b09336c47d312bc1f7a504 %}
