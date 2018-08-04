@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Leaflet 맛보기 Chapter. 1
+title: Leaflet 맛보기 Chapter. 1. Leaflet OSM
 description: 
 date: 2018-07-25
 categories: 
@@ -10,7 +10,8 @@ tags:
 - 배경지도
 - OSM
 - Gist
-img: 
+photos: 
+- ../../../../../assets/images/posts/2018-07-25/Openstreetmap-logo.png
 author: bbong5
 ---
 **Leaflet에 다양한 배경지도 띄우기 [1탄]<br/><i class="fa fa-quote-left"></i> OSM <i class="fa fa-quote-right"></i> 배경지도**{: style="display:inherit;text-align:center;"}

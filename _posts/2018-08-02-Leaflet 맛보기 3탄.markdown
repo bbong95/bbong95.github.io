@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Leaflet 맛보기 Chapter. 3
+title: Leaflet 맛보기 Chapter. 3. Leaflet Naver Map
 description: 
 date: 2018-08-02
 categories: 
@@ -9,10 +9,12 @@ tags:
 - Leaflet
 - 배경지도
 - 네이버지도
+- Naver Map
 - KoreanTmsProviders
 - Pro4j
 - proj4leaflet
-img: 
+photos: 
+- ../../../../../assets/images/posts/2018-08-02/navermaplogo.jpg
 author: bbong5
 ---
 **Leaflet에 다양한 배경지도 띄우기 [3탄]<br/><i class="fa fa-quote-left"></i> 네이버 지도(Naver Map) <i class="fa fa-quote-right"></i> 배경지도**{: style="display:inherit;text-align:center;"}
@@ -24,16 +26,14 @@ Chapter 2에서 Google Map 띄우기를 해보았고, 이번 시간에는 `네�
 
 지금부터 소개하는 Tile Map들은 모두 국내에서 제작 및 서비스 되는 지도들로써, 가장 최신의 타일맵 URL정보를 획득하여 Leaflet에 표시하는 것을 목표로 한다.
 
-## 1. 네이버 지도
-
-### 타일 맵 주소(URL)
+## 1. 네이버 지도 타일 맵 주소(URL)
 
 네이버지도의 Tile URL을 구글링을 통해 찾았지만, 최신 URL이 아닌 2016년도 URL이다. 또한, 기본 Road Map의 URL만 있다.
 - [QGIS의 다음, 네이버지도 업데이트 방법](http://snugis.tistory.com/120){:target="_blank"} <i class="fa fa-external-link"></i>
 
 우리는 네이버에서 제공하는 모든 지도 유형을 전부 사용할 예정이므로, 전수 조사를 해보자.
 네이버 지도 tile map url을 찾는 전체적인 프로세스는 다음과 같다.<br/>
-![](../../../../../assets/images/posts/2018-08-01/naver-map-tile-url.png)
+![](../../../../../assets/images/posts/2018-08-02/naver-map-tile-url.png)
 (설명)
 > (1) 브라우저에서 네이버지도 사이트 open<br/>
 > (2) 개발자 도구를 열어(IE, Chrome의 경우 F12) Network Tab 클릭<br/>
@@ -67,7 +67,9 @@ Chapter 2에서 Google Map 띄우기를 해보았고, 이번 시간에는 `네�
 
 이렇게 구분된다. 나중에 전부 다 사용하기로 하고, 일단은 (1) 일반지도(Standard Road Map)를 Leaflet에 올려본다.
 
-### Leaflet.KoreanTmsProviders
+## 2. Naver Map 배경지도 스크립트
+
+### Leaflet.KoreanTmsProviders 소개
 
 추후에 다양한 지도들을 전부 다 표시하기위해, [`Leaflet Plugins`](https://leafletjs.com/plugins.html){:target="_blank"} <i class="fa fa-external-link"></i>에서 **Basemap providers**中 **Leaflet.KoreanTmsProviders**를 이용하기로 한다.(여기에서는 (2) 업그레이드 버전을 사용한다.)
 > (1) 초기 버전(Leaflet 0.7 version 사용)
@@ -83,9 +85,7 @@ Chapter 2에서 Google Map 띄우기를 해보았고, 이번 시간에는 `네�
 간단하게 설명하면, Leaflet에서 기본 제공하는 좌표(체)계는 [`EPSG:4326`](https://leafletjs.com/reference-1.3.2.html#projection-l-projection-lonlat){:target="_blank"} <i class="fa fa-external-link"></i>, [`EPSG:3395`](https://leafletjs.com/reference-1.3.2.html#projection-l-projection-mercator){:target="_blank"} <i class="fa fa-external-link"></i>, [`EPSG:3857`](https://leafletjs.com/reference-1.3.2.html#projection-l-projection-sphericalmercator){:target="_blank"} <i class="fa fa-external-link"></i>인데, 이들 이외에 좌표(체)계를 사용하여 서비스되는 지도들은 **좌표(체)계 변환(or 좌표(체)계 정의)**을 통해 Leaflet에 표시할 수 있다. (좌표(체)계에 대한 조금더 상세한 내용은 [**Leaflet 맛보기 2탄-1.사전지식**](https://bbong95.github.io/leaflet/2018/07/30/Leaflet-맛보기-2탄/#1-사전-지식){:target="_blank"} <i class="fa fa-external-link"></i>)을 참고한다.)<br/>
 **Leaflet.KoreanTmsProviders**는 국내에서 서비스 되고 있는 지도(네이버지도, 다음지도, 브이월드지도)들의 좌표(체)계를 정의하고, 이를 이용하여 Leaflet에 표시할 수 있도록 만들어놓은 자바스크립트 plugin이다. 여기에 더해서, 향후에 올레맵, 바로e맵도 추가해 볼 예정이다.
 
-### Naver Map 배경지도 스크립트
-
-#### Leaflet.KoreanTmsProviders : Naver Map 부분
+### Leaflet.KoreanTmsProviders : Naver Map 부분
 > (1) 좌표(체)계 정의: **EPSG:5179**
 {% highlight javascript linenos %}
 L.Proj.CRS.Naver = new L.Proj.CRS(
