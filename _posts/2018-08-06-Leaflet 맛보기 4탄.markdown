@@ -1,0 +1,201 @@
+---
+layout: post
+title: Leaflet 맛보기 Chapter. 4. Leaflet Daum Map
+description: 
+date: 2018-08-06
+categories: 
+- Leaflet
+tags: 
+- Leaflet
+- 배경지도
+- 다음지도
+- Daum Map
+- 카카오지도
+- Kakaomap
+- 법정동
+- 행정동
+photos: 
+- ../../../../../assets/images/posts/2018-08-06/daum-map-logo.jpg
+author: bbong5
+---
+**Leaflet에 다양한 배경지도 띄우기 [4탄]<br/><i class="fa fa-quote-left"></i> 다음 지도(Daum Map) <i class="fa fa-quote-right"></i> 배경지도**{: style="display:inherit;text-align:center;"}
+---
+OSM, 구글지도, 네이버지도, 다음지도, 브이월드 등 다양한 배경지도를 leaflet에서 표시해 본다.<br/>
+Chapter 3에서 Naver Map 띄우기를 해보았고, 이번 시간에는 `다음 지도(Daum Map)를 Leaflet에 표시`해 본다.
+
+# Leaflet 배경지도
+
+지금부터 소개하는 Tile Map들은 모두 국내에서 제작 및 서비스 되는 지도들로써, 가장 최신의 타일맵 URL정보를 획득하여 Leaflet에 표시하는 것을 목표로 한다.
+
+## 1. 다음 지도 타일 맵 주소(URL)
+
+다음지도의 Tile URL은 앞에 시간에 알아본 [**Leaflet 맛보기 3탄-1.네이버 지도 타일 맵 주소(URL)**](https://bbong95.github.io/leaflet/2018/08/02/Leaflet-맛보기-3탄/#1-네이버-지도-타일-맵-주소url){:target="_blank"} <i class="fa fa-external-link"></i>와 마찬가지로 Tile Map URL을 가져오면 된다.<br/>
+[특징]
++ 다음지도는 구글지도와 유사하게 0~3번 서버에서 Tile Map Images를 제공하고 있다.
++ 법정동 경계 및 행정동 경계 지도를 제공한다.
+	+ [법정동과 행정동 차이점은](https://m.post.naver.com/viewer/postView.nhn?volumeNo=5875328&memberNo=7653935){:target="_blank"} <i class="fa fa-external-link"></i> [출처] 바이후의 잡다구리구리~♥(2015-01-29)
+	+ [[GIS] 법정동, 행정동, PNU코드 구성 + 법정동코드 다운로드](http://byhou.tistory.com/390){:target="_blank"} <i class="fa fa-external-link"></i> [출처] e분양(2016-12-21)
++ 일반 날씨정보는 JSON Data를 지도 위에 표시하지만, 대기질과 관련된 정보는 Tile로 Images를 떠서 선택 배경지도 위에 Overlay 시킨다.
+<br/>
+
+`다음지도의 Tile Map URL`은 `Tile Image 저장 directory 이름`에 따라
+> (1) **일반지도(Standard Road Map)** :<br/> `http://map{s}.daumcdn.net/map_2d/1807hsm/L{z}/{y}/{x}.png`
++ `map_2d` : 일반지도(Standard Road Map)를 의미함.
+
+> (2) **지형도(Terrain Map)** :<br/> `http://map{s}.daumcdn.net/map_shaded_relief/3.00/L{z}/{y}/{x}.png`
++ `map_shaded_relief` : 지형도(Terrain)를 의미함.
+
+> (3) **위성지도(Satellite Only, Skyview)** :<br/> `http://map{s}.daumcdn.net/map_skyview/L{z}/{y}/{x}.jpg?v=160114`
++ `map_skyview` : 위성지도(Satellite Only), 스카이뷰(Sky View)를 의미함.
+
+> (4) **위성지도+라벨 중첩지도(Hybrid)** :<br/> `http://map{s}.daumcdn.net/map_hybrid/1807hsm/L{z}/{y}/{x}.png`
++ `map_hybrid` : 위성지도+라벨 중첩지도(Hybrid)를 의미함.
+
+> (5) **지적편집도(Cadastral)** :<br/> `http://map{s}.daumcdn.net/map_usedistrict/1807hsm/L{z}/{y}/{x}.png`
++ `map_usedistrict` : 지적편집도(Cadastral)를 의미함.
+
+> (6) **법정동경계지도** :<br/> `http://boundary.map.daum.net/mapserver/db/HBOUN_L/L{z}/{y}/{x}.png`
++ `HBOUN_L` : 법정동 경계를 의미함.
+
+> (7) **행정동경계지도** :<br/> `http://boundary.map.daum.net/mapserver/db/BBOUN_L/L{z}/{y}/{x}.png`
++ `BBOUN_L` : 법정동 경계를 의미함.
+
+> (8) **자전거도로지도(Bicycle)** :<br/> `http://map{s}.daumcdn.net/map_bicycle/2d/6.00/L{z}/{y}/{x}.png`
++ `map_bicycle` : 자전거도로지도(Bicycle)를 의미함.
+
+> (9) **교통상황지도(Traffic)** :<br/> `http://r{s}.maps.daum-img.net/mapserver/file/realtimeroad/L{z}/{y}/{x}.png`
++ `realtimeroad` : 교통상황지도(Traffic)를 의미함.
+
+> (10) **로드뷰지도(Road View)** :<br/> `http://map{s}.daumcdn.net/map_roadviewline/7.00/L{z}/{y}/{x}.png`
++ `map_roadviewline` : 로드뷰지도(Road View)를 의미함.
+
+> (11) **미세먼지지도(FineDust)** :<br/> `http://airinfo.map.kakao.com/mapserver/file/airinfo_pm10/T/L{z}/{y}/{x}.png`
++ `airinfo_pm10` : 미세먼지(PM10)를 의미함.
+
+> (12) **황사지도(YellowDust)** :<br/> `http://airinfo.map.kakao.com/mapserver/file/airinfo_ysnd/T/L{z}/{y}/{x}.png`
++ `airinfo_ysnd` : 황사(YSND)를 의미함.
+
+> (13) **이산화질소지도(NO2)** :<br/> `http://airinfo.map.kakao.com/mapserver/file/airinfo_no2/T/L{z}/{y}/{x}.png`
++ `airinfo_no2` : 이산화질소(NO2)를 의미함.
+
+> (14) **아황산가스지도(SO2)** :<br/> `http://airinfo.map.kakao.com/mapserver/file/airinfo_so2/T/L{z}/{y}/{x}.png`
++ `airinfo_so2` : 아황산가스(SO2)를 의미함.
+
+> (15) **통합대기지수지도(CAI)** :<br/> `http://airinfo.map.kakao.com/mapserver/file/airinfo_khai/T/L{z}/{y}/{x}.png`
++ `airinfo_khai` : 통합대기지수(CAI)를 의미함.
+
+> (16) **초미세먼지지도(PM25)** :<br/> `http://airinfo.map.kakao.com/mapserver/file/airinfo_pm25/T/L{z}/{y}/{x}.png`
++ `airinfo_pm25` : 초미세먼지(PM25)를 의미함.
+
+> (17) **오존지도(PM25)** :<br/> `http://airinfo.map.kakao.com/mapserver/file/airinfo_o3/T/L{z}/{y}/{x}.png`
++ `airinfo_o3` : 오존(O3)를 의미함.
+
+> (18) **일산화탄소지도(CO)** :<br/> `http://airinfo.map.kakao.com/mapserver/file/airinfo_co/T/L{z}/{y}/{x}.png`
++ `airinfo_co` : 일산화탄소(CO)를 의미함.
+
+이렇게 구분된다. 많다....ㄷㄷㄷㄷ. 나중에 전부 다 사용하기로 하고, 일단은 (1) 일반지도(Standard Road Map)를 Leaflet에 올려본다.
+
+## 2. Daum Map 배경지도 스크립트
+
+### Leaflet.KoreanTmsProviders : Daum Map 부분
+이전 시간에 Naver Map부분에 대해 살펴보았고, 이번 시간에는 Daum Map 부분을 살펴볼 것이다. 기본 설정 부분에 위에서 조사한 Tile Map URL도 전부 넣어준다.
+
+> (1) 좌표(체)계 정의: **EPSG:5181**
+{% highlight javascript linenos %}
+//다음지도 좌표계 정의
+L.Proj.CRS.Daum = new L.Proj.CRS(
+	'EPSG:5181',
+    '+proj=tmerc +lat_0=38 +lon_0=127 +k=1 +x_0=200000 +y_0=500000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs',
+    {
+      resolutions: [2048, 1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1, 0.5, 0.25],
+      origin: [-30000, -60000],
+	  bounds: L.bounds([-30000-Math.pow(2,19)*4, -60000], [-30000+Math.pow(2,19)*5, -60000+Math.pow(2,19)*5])
+    }
+ );
+{% endhighlight %}
+
+> (2) 기본 설정 : **Tile image URL**설정, 앞에 정의된 **CRS** 설정, 기타 **옵션들** 설정
+{% highlight javascript linenos %}
+//다음지도 Tile URL
+DaumMap: {
+	url: 'http://map{s}.daumcdn.net/map_2d/1807hsm/L{z}/{y}/{x}.png',
+	crs: L.Proj.CRS.Daum,
+	options: {
+		maxZoom: 13, 
+		minZoom: 0,
+		zoomReverse: true, //다음지도는 레벨 13(小축척) -> 레벨 0(大축척)으로 줄어듦
+		zoomOffset: 1,
+		subdomains: '0123',
+		continuousWorld: true,
+		tms: true,
+		attribution: 'Map data &copy; <a target="_blank" href="http://map.daum.net/" title="Daum 지도로 보시려면 클릭하세요." style="float: right; width: 38px; height: 17px; cursor: pointer;"><img src="http://t1.daumcdn.net/localimg/localimages/07/mapjsapi/m_bi.png" alt="Daum 지도로 이동" style="width: 37px; height: 18px; border: none;"></a>'
+		},
+		variants: {
+			Street: {}, //일반지도(Standard Road Map)
+			Cadastral: { //지적편집도(Cadastral)
+				url: 'http://map{s}.daumcdn.net/map_usedistrict/1807hsm/L{z}/{y}/{x}.png'
+			},
+			BBoundary: { //법정동경계지도
+				url: 'http://boundary.map.daum.net/mapserver/db/BBOUN_L/L{z}/{y}/{x}.png'
+			},
+			HBoundary: { //행정동경계지도
+				url: 'http://boundary.map.daum.net/mapserver/db/HBOUN_L/L{z}/{y}/{x}.png'
+			},
+			Physical: { //지형도(Terrain Map)
+				url: 'http://map{s}.daumcdn.net/map_shaded_relief/3.00/L{z}/{y}/{x}.png' 
+			},
+			Hybrid: { //위성지도+라벨 중첩지도(Hybrid)
+				url: 'http://map{s}.daumcdn.net/map_hybrid/1807hsm/L{z}/{y}/{x}.png'
+			},
+			SkyView: { //위성지도(Satellite Only) : Daum Map에서는 스카이뷰로 사용됨
+				url: 'http://map{s}.daumcdn.net/map_skyview/L{z}/{y}/{x}.jpg?v=160114' 
+			},
+			Bicycle: { //자전거도로지도(Bicycle)
+				url: 'http://map{s}.daumcdn.net/map_bicycle/2d/6.00/L{z}/{y}/{x}.png' 
+			},
+			Traffic: { //교통상황지도(Traffic)
+				url: 'http://r{s}.maps.daum-img.net/mapserver/file/realtimeroad/L{z}/{y}/{x}.png' 
+			},
+			RoadView: { //로드뷰)
+				url: 'http://map{s}.daumcdn.net/map_roadviewline/7.00/L{z}/{y}/{x}.png' 
+			},
+			FineDust: { //미세먼지지도
+				url: 'http://airinfo.map.kakao.com/mapserver/file/airinfo_pm10/T/L{z}/{y}/{x}.png'
+			},
+			YellowDust: { //황사지도
+				url: 'http://airinfo.map.kakao.com/mapserver/file/airinfo_ysnd/T/L{z}/{y}/{x}.png'
+			},
+			NO2: { //이산화질소지도
+				url: 'http://airinfo.map.kakao.com/mapserver/file/airinfo_no2/T/L{z}/{y}/{x}.png'
+			},
+			SO2: { //아황산가스지도
+				url: 'http://airinfo.map.kakao.com/mapserver/file/airinfo_so2/T/L{z}/{y}/{x}.png'
+			},
+			CAI: { //통합대기지수지도
+				url: 'http://airinfo.map.kakao.com/mapserver/file/airinfo_khai/T/L{z}/{y}/{x}.png'
+			},
+			PM25: { //초미세먼지지도
+				url: 'http://airinfo.map.kakao.com/mapserver/file/airinfo_pm25/T/L{z}/{y}/{x}.png'
+			},
+			O3: { //오존지도
+				url: 'http://airinfo.map.kakao.com/mapserver/file/airinfo_o3/T/L{z}/{y}/{x}.png'
+			},
+			CO: { //일산화탄소지도
+				url: 'http://airinfo.map.kakao.com/mapserver/file/airinfo_co/T/L{z}/{y}/{x}.png'
+			}
+		}
+},
+{% endhighlight %}
+
+## 3. 전체 소스
+
+### 실행 URL
+
+[`Leaflet 다음지도(Daum Map) 배경지도`](https://bbong95.github.io/leaflet.examples/leaflet-daummap.html){:target="_blank"} <i class="fa fa-external-link"></i>
+
+### 전체 소스 URL
+[`https://github.com/bbong95/leaflet.examples`](https://github.com/bbong95/leaflet.examples){:target="_blank"} <i class="fa fa-external-link"></i>
+
+### Gist에 소스 연동
+
+{% gist 2a2b8d19581c65aba6afb0daac1614cd %}

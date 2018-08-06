@@ -153,6 +153,6 @@ NaverMap: {
 
 {% gist e6ee3e570aed05242607d338886bbc7c %}
 
-### 최종 모습(?) : 맛집 지도(Google Map + CSV)
+### 최종 모습(?) : 맛집 지도(Google Map + CSV: 수요미식회 방영 맛집)
 
 [`Leaflet 맛집 지도`](https://bbong95.github.io/leaflet.examples/leaflet-tasteSpot.html){:target="_blank"} <i class="fa fa-external-link"></i>
