@@ -8,6 +8,7 @@ title: bbong5's Technical Reports
 subtitle: 끄적거림
 description: 데이터시각화에 대한 기술 문서
 author: bbong5
+futrue: true
 # Support language: de, en, fr-FR, id, ja, ko, pt-BR, pt, ru, zh-Hans, zh-hk, zh-tw
 language: ko
 date_format: '%Y-%m-%d'
