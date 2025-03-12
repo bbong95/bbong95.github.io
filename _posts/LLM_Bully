@@ -1,0 +1,30 @@
+---
+layout: post
+title: LLM 괴롭히기
+description: 
+date: 2025-03-13
+categories: 
+- AI
+tags: 
+- LLM
+- AI
+- HTML
+photos: 
+- ../../../../../assets/images/posts/2025-03-15/AI.jpeg
+author: bbong5
+---
+**LLM 괴롭히기 모음집<br/><i class="fa fa-quote-left"></i> LLMs <i class="fa fa-quote-right"></i> 괴롭히기**{: style="display:inherit;text-align:center;"}
+---
+각종 LLM들을 괴롭혀본다.<br/>
+
+## 1. QWEN AI
+
+[`NYC Art Gallary`](https://bbong95.github.io/leaflet.examples/qwen_NYC2.html){:target="_blank"} <i class="fa fa-external-link"></i>
+
+## 2. perplexity
+
+### 실행 URL
+
+[`NYC Art Gallary`](https://bbong95.github.io/leaflet.examples/퍼플렉시티_NYC2.html){:target="_blank"} <i class="fa fa-external-link"></i>
+
+[`서울 야경 명소 대시보드`](https://bbong95.github.io/leaflet.examples/퍼플렉시티_seoul2.html){:target="_blank"} <i class="fa fa-external-link"></i>
