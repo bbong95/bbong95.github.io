@@ -2,7 +2,7 @@
 layout: post
 title: LLM 괴롭히기
 description: 
-date: 2025-03-15
+date: 2025-03-13
 categories: 
 - AI
 tags: 
@@ -10,7 +10,7 @@ tags:
 - AI
 - HTML
 photos: 
-- ../../../../../assets/images/posts/2025-03-15/AI.jpeg
+- ../../../../../assets/images/posts/2025-03-13/AI.jpeg
 author: bbong5
 ---
 **LLM 괴롭히기 모음집<br/><i class="fa fa-quote-left"></i> LLMs <i class="fa fa-quote-right"></i> 괴롭히기**{: style="display:inherit;text-align:center;"}
